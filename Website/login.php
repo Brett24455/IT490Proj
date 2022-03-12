@@ -1,4 +1,17 @@
 <?php
+$db = 'localhost';
+$user = 'webClient';
+$pass = 'GrAtMaPaLeGo';
+
+$conn = new mysqli($db, $user, $pass);
+
+if($conn->connection_error){
+	die("Connection failed: ". $conn->connection_error);
+}
+else{
+	echo "Connected successfully.";
+}
+
 function login($username, $password){
 	if($username != "testUser"){
 		echo "Invalid Username"; 
