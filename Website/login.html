@@ -14,12 +14,16 @@
 <input type = submit>
 </form>-->
 
+<!DOCTYPE html>
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
+
 </head>
 <body>
 <form>
+    <h1>Welcome Back Player!</h1>
     <div class="field">
         <input type="email" placeholder="Username" required/>
     </div>
@@ -36,6 +40,12 @@
 </html>
 
 <style>
+h1 {
+    color: white;
+    opacity: 85%;
+    background: black;
+
+}
 body {
 font-family: 'Lato', sans-serif;
 color: #4A4A4A;
@@ -46,8 +56,20 @@ min-height: 100vh;
 overflow: hidden;
 margin: 0;
 padding: 0;
-background-image: url("Back-Anime-2 2.png");
 }
+
+body::before {
+    background-image: url("Back-Anime-2 2.png");
+    content: "";
+    background-size: auto;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.85;
+}
+
 form {
 width: 350px;
 position: relative;
@@ -78,5 +100,9 @@ background-color: yellow;
 color: black;
 border-radius: 4px;
 font-size: 17px;
+}
+
+.field {
+    padding: 10px;
 }
 </style>
