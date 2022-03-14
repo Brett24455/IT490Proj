@@ -12,6 +12,11 @@ function doLogin($username,$password)
     //return false if not valid
 }
 
+function doSearch($msg)
+{
+	return "<br>Searching for ".$msg."<br>Results: ";
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -26,6 +31,8 @@ function requestProcessor($request)
       return doLogin($request['username'],$request['password']);
     case "validate_session":
       return doValidate($request['sessionId']);
+    case "search":
+      return doSearch($request['message']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

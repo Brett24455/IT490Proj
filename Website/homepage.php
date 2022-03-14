@@ -21,7 +21,7 @@ else
 //echo "<br>'$msg'<br>";
 
 $request = array();
-$request['type'] = "Login";
+$request['type'] = "search";
 $request['username'] = "steve";
 $request['password'] = "password";
 $request['message'] = $msg;
