@@ -6,9 +6,21 @@ require_once('rabbitMQLib.inc');
 
 function doSearch($msg)
 {
+	
     // lookup $msg/card in the api
     // return all necessary data back
-    return "Whats good ".$msg;
+
+    /*	
+    $response = array();
+    $response['name'] = ;
+    $response['rating'] = ;
+    $response['atk'] = ;
+    $response['def'] = ;
+    $response['effect'] = ;
+    */
+
+    // return $response;
+    return "Unfinished function ".$msg;
 }
 
 function requestProcessor($request)
