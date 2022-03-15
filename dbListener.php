@@ -7,22 +7,23 @@ require_once('rabbitMQLib.inc');
 function doLogin($username,$password)
 {
     // connect to DB
-    $db = 'localhost';
+    $host = 'localhost';
     $user = 'webClient';
     $pass = 'GrAtMaPaLeGo';
+    $db = 'webdb';
 
-    $conn = new mysqli($db, $user, $pass);
-
-    if($conn->connection_error){
-        die("Connection failed: ". $conn->connection_error);
+    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+    ini_set('display_errors', 1);
+    $conn = new mysqli($host, $user, $pass);
+    if($conn->connect_error){
+	    die("Connection failed: ".mysqli_connect_error());
     }
-    else{
-        echo "Connected successfully.";
-    }
+    echo "Connected successfully.";
+    mysqli_select_db($conn, $db);
 
     // lookup username in database
     $s = " select * from USERS where username='$username' ";
-    ($t = mysqli_query($db, $s)) or die(mysqli_error($db));
+    ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
     $count = mysqli_num_rows($t);
     echo "<br>Count: $count";
     if($count == 0) {
@@ -32,13 +33,13 @@ function doLogin($username,$password)
 
     // check password
     $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
-    $hash = $r['hash'];
-    if(password_verify($password, $hash)){
+    $matchpass = $r['password'];
+    if($password == $matchpass){
 	echo "<br>Valid Password";
     } else {
 	echo "<br>Invalid Password";
     }
-    return password_verify($password, $hash);
+    return ($password == $matchpass);
     //return "Whats good ".$username;
     //return false if not valid
 }

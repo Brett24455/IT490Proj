@@ -39,10 +39,11 @@ function login($username, $password){
 $user = $_GET["username"];
 $pass = $_GET["password"];
 
-if(!login($user, $pass)){
-	echo "<br>Failed login.";
+if(login($user, $pass)){
+	echo "<br>Logged In.";
 }
 else{
-	echo "<br>Logged in.";
+	echo "<br>Failed login.";
+	exit();
 }
 ?>
