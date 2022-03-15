@@ -32,9 +32,30 @@ function doLogin($username,$password)
     //return false if not valid
 }
 
-function doSearch($msg)
+function doSearch($message)
 {
-	return "<br>Searching for ".$msg."<br>Results: ";
+    $client = new rabbitMQClient("dmzRabbitMQ.ini", "dmzListener");
+    if (isset($argv[1]))
+    {
+      $msg = $argv[1];
+    }
+    else
+    {
+      $msg = "test message";
+    }
+
+    $request = array();
+    $request['type'] = "search";
+    $request['message'] = $message;
+    $response = $client->send_request($request);
+    //$response = $client->publish($request);
+
+    echo "client received response: ".PHP_EOL;
+    print_r($response);
+    echo "\n\n";
+
+    return $response;
+
 }
 
 function requestProcessor($request)
