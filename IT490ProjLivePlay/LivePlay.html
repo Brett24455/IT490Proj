@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LivePlay</title>
+<link href="css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css">
+<script src="jQueryAssets/jquery-1.11.1.min.js"></script>
+<script src="jQueryAssets/jquery.ui-1.10.4.button.min.js"></script>
+</head>
+<body>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap-4.4.1.js"></script>
+<div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Change Phase&nbsp; </a>
+<div class="dropdown-menu">
+	<a class="dropdown-item enabled" href="#" >Draw Phase</a>
+	<div class="dropdown-divider"></div>
+	<a class="dropdown-item enabled" href="#" >Standby Phase</a>
+	<div class="dropdown-divider"></div>
+    <a class="dropdown-item enabled" href="#" >Main Phase 1</a>
+	<div class="dropdown-divider"></div>
+	<a class="dropdown-item enaabled" href="#" >Battle Phase</a>  
+    <div class="dropdown-divider"></div>
+	<a class="dropdown-item enabled" href="#" >Main Phase 2</a>
+	<div class="dropdown-divider"></div>
+	<a class="dropdown-item enabled" href="#" >End Turn</a>
+</div>	
+<button id="Button1">Surrender&nbsp;</button>
+</div>
+	<div id="duel"></div>
+					<img id="field_spell_pic" src="images/FieldSpellDefault.jpg" alt="Field Spell" data-source="images/FieldspellDefault.jpg">
+					<div id="rps_start" class="duel_frame"></div>
+<div id="tp_start" class="duel_frame">
+						<img id="field_decks" class="field_decks" src="images/field_decks.svg" alt="Decks" data-source="images/field_decks.svg">
+					</div>
+					<div id="duel_start" class="duel_frame">
+						<img src="images/field_zones.svg" alt="Field" height="850" class="field_zones" id="field_zones" data-source="images/field_zones.svg" >
+					</div>
+<div id="field"></div>
+<div class="preview"></div>
+	<div id="duel_content" class="duel_frame"></div>
+						<div id="field_content">
+							<div id="die_btn">
+								<img src="images/blank.png" alt="Die" data-src="images/die_btn_up.svg">
+							</div>
+							<div id="coin_btn">
+								<img src="images/blank.png" alt="Coin" data-src="images/coin_btn_up.svg">
+							</div>
+							<div class="token_btn">
+								<img src="images/blank.png" width="30" height="28" alt="Token" data-src="images/token_btn_up.png">
+							</div>
+							<span id="lp_txt">LP:</span>
+							<input id="life_txt" type="text">
+							<div id="plus_btn">
+								<img src="images/blank.png" alt="Plus" data-src="images/plus_btn.svg">
+							</div>
+							<div id="minus_btn">
+								<img src="images/blank.png" alt="Minus" data-src="images/minus_btn.svg">
+							</div>
+						</div>
+	<div id="field_stats">
+							<span id="hm1_txt"></span>
+							<span id="hm2_txt"></span>
+							<span id="hm3_txt"></span>
+							<span id="hm4_txt"></span>
+							<span id="hm5_txt"></span>
+							<span id="om1_txt"></span>
+							<span id="om2_txt"></span>
+							<span id="om3_txt"></span>
+							<span id="om4_txt"></span>
+							<span id="om5_txt"></span>
+							<span id="hl_txt"></span>
+							<span id="ol_txt"></span>					
+						</div>
+						<div id="counters"></div>
+						<div id="hidden_spots">
+							<div class="untouchable">
+								<span id="m1_hidden"></span>
+								<span id="m2_hidden"></span>
+								<span id="m3_hidden"></span>
+								<span id="m4_hidden"></span>
+								<span id="m5_hidden"></span>							
+								<span id="opp_m1_hidden"></span>
+								<span id="opp_m2_hidden"></span>
+								<span id="opp_m3_hidden"></span>
+								<span id="opp_m4_hidden"></span>
+								<span id="opp_m5_hidden"></span>
+								<span id="link_left_hidden"></span>
+								<span id="link_right_hidden"></span>
+							</div>
+							<span id="deck_hidden"></span>
+							<span id="grave_hidden"></span>
+							<span id="banished_hidden"></span>
+							<span id="extra_hidden"></span>
+							<span id="opp_deck_hidden"></span>
+							<span id="opp_grave_hidden"></span>
+							<span id="opp_banished_hidden"></span>
+							<span id="opp_extra_hidden"></span>
+						</div>
+						<div id="numbers">
+							<span id="cid1_txt"></span>
+							<span id="cig1_txt"></span>
+							<span id="cib1_txt"></span>
+							<span id="cie1_txt"></span>
+							<span id="cid2_txt"></span>
+							<span id="cig2_txt"></span>
+							<span id="cib2_txt"></span>
+							<span id="cie2_txt"></span>
+						</div>
+						<div id="select_zones" class="glowing">
+							<div id="m1_select"></div>
+							<div id="m2_select"></div>
+							<div id="m3_select"></div>
+							<div id="m4_select"></div>
+							<div id="m5_select"></div>
+							
+							<div id="m1_select2"></div>
+							<div id="m2_select2"></div>
+							<div id="m3_select2"></div>
+							<div id="m4_select2"></div>
+							<div id="m5_select2"></div>
+							
+							<div id="s1_select"></div>
+							<div id="s2_select"></div>
+							<div id="s3_select"></div>
+							<div id="s4_select"></div>
+							<div id="s5_select"></div>
+						</div>
+<script>
+//Javascript here
+function Player() {
+	var player = {};
+	
+	player.username = "";
+	player.main_arr = [];
+	player.grave_arr = [];
+	player.extra_arr = [];
+	player.hand_arr = [];
+	player.banished_arr = [];
+	player.field_arr = [];
+	player.all_cards_arr = [];
+	player.temp_arr = [];
+	player.handY = 0;
+	player.deckX = 0;
+	player.deckY = 0;
+	player.graveX = 0;
+	player.graveY = 0;
+	player.banishedX = 0;
+	player.banishedY = 0;
+	player.extraX = 0;
+	player.extraY = 0;
+	player.fieldSpellX = 0;
+	player.fieldSpellY = 0;
+	player.monsterY = 0;
+	player.spellY = 0;
+	player.mX = 0;
+	player.mY = 0;
+	player.gX = 0;
+	player.gY = 0;
+	player.bX = 0;
+	player.eX = 0;
+	player.eY = 0;
+	player.rot = 0;
+	player.rotY = 0;
+	player.defRot = 0;
+	player.hand_position_arr = [];
+	player.m1X = 0;
+	player.m2X = 0;
+	player.m3X = 0;
+	player.m4X = 0;
+	player.m5X = 0;
+	player.s1X = 0;
+	player.s2X = 0;
+	player.s3X = 0;
+	player.s4X = 0;
+	player.s5X = 0;
+	player.m1Y = 0;
+	player.m2Y = 0;
+	player.m3Y = 0;
+	player.m4Y = 0;
+	player.m5Y = 0;
+	player.s1Y = 0;
+	player.s2Y = 0;
+	player.s3Y = 0;
+	player.s4Y = 0;
+	player.s5Y = 0;
+	player.m1xStart = 0;
+	player.m1xEnd = 0;
+	player.m2xStart = 0;
+	player.m2xEnd = 0;
+	player.m3xStart = 0;
+	player.m3xEnd = 0;
+	player.m4xStart = 0;
+	player.m4xEnd = 0;
+	player.m5xStart = 0;
+	player.m5xEnd = 0;
+	player.m1;
+	player.m2;
+	player.m3;
+	player.m4;
+	player.m5;
+	player.s1;
+	player.s2;
+	player.s3;
+	player.s4;
+	player.s5;
+	player.fieldSpell;
+	player.opponent;
+	player.lifepoints = 8000;
+	player.m1_txt;
+	player.m2_txt;
+	player.m3_txt;
+	player.m4_txt;
+	player.m5_txt;
+	player.deck_face_up = false;
+	player.rating_rep_txt;
+	player.token = 1;
+	player.skillCardX = 0;
+	player.skillCardY = 0;
+	player.countdown;
+	player.skillCard;
+	player.skill = "";
+	player.seconds;
+	player.start;
+	
+	player.initPlayer1 = function(){
+		player.handY = 603;
+		player.deckX = 801;
+		player.deckY = 531.5;
+		player.graveX = 801;
+		player.graveY = 338.5;
+		player.banishedX = 734;
+		player.banishedY = 291.5;
+		player.extraX = 239;
+		player.extraY = 531.5;
+		player.fieldSpellX = 239;
+		player.fieldSpellY = 338.5;
+		player.monsterY = 384.5;
+		player.spellY = 476.5;
+		player.mX = 0.2925;
+		player.mY = 0.1025;
+		player.eX = -0.2925;
+		player.eY = 0.1025;
+		player.bX = 0.283;
+		player.gX = 0.283;
+		player.gY = 0.067;
+		player.rot = 0;
+		player.rotY = 0;
+		player.defRot = -90;
+		player.hand_position_arr = [485, 535, 585, 635, 685, 704];
+		player.m1X = 332.7;
+		player.m2X = 426.3;
+		player.m3X = 519.9;
+		player.m4X = 613;
+		player.m5X = 705;
+		player.s1X = 332.7;
+		player.s2X = 426.3;
+		player.s3X = 519.9;
+		player.s4X = 613;
+		player.s5X = 705;
+		player.m1Y = 384.5;
+		player.m2Y = 384.5;
+		player.m3Y = 384.5;
+		player.m4Y = 384.5;
+		player.m5Y = 384.5;
+		player.s1Y = 477.5;
+		player.s2Y = 477.5;
+		player.s3Y = 477.5;
+		player.s4Y = 477.5;
+		player.s5Y = 477.5;
+		player.m1xStart = 320;
+		player.m1xEnd = 347;
+		player.m2xStart = 413;
+		player.m2xEnd = 440;
+		player.m3xStart = 506;
+		player.m3xEnd = 533;
+		player.m4xStart = 599;
+		player.m4xEnd = 626;
+		player.m5xStart = 692;
+		player.m5xEnd = 719;
+	};
+	
+	player.initPlayer2 = function(){
+		player.handY = -21;
+		player.deckX = 239;
+		player.deckY = 52.5;
+		player.graveX = 239;
+		player.graveY = 244.5;
+		player.banishedX = 306;
+		player.banishedY = 291.5;
+		player.extraX = 801;
+		player.extraY = 52.5;
+		player.fieldSpellX = 801;
+		player.fieldSpellY = 244.5;
+		player.monsterY = 198.5;
+		player.spellY = 105.5
+		player.mX = -0.2925;
+		player.mY = -0.1025;
+		player.eX = 0.2925;
+		player.eY = -0.1025;
+		player.bX = -0.283;
+		player.gX = -0.283;
+		player.gY = -0.067;
+		player.rot = 180;
+		player.rotY = 180;
+		player.defRot = 90;
+		player.hand_position_arr = [485, 435, 385, 335, 285, 285];
+		player.m1X = 705;
+		player.m2X = 613;
+		player.m3X = 519.9;
+		player.m4X = 426.3;
+		player.m5X = 332.7;
+		player.s1X = 705;
+		player.s2X = 613;
+		player.s3X = 519.9;
+		player.s4X = 426.3;
+		player.s5X = 332.7;
+		player.m1Y = 199.5;
+		player.m2Y = 199.5;
+		player.m3Y = 199.5;
+		player.m4Y = 199.5;
+		player.m5Y = 199.5;
+		player.s1Y = 105.5;
+		player.s2Y = 105.5;
+		player.s3Y = 105.5;
+		player.s4Y = 105.5;
+		player.s5Y = 105.5;
+		player.m1xStart = 719;
+		player.m1xEnd = 692;
+		player.m2xStart = 626;
+		player.m2xEnd = 599;
+		player.m3xStart = 533;
+		player.m3xEnd = 506;
+		player.m4xStart = 440;
+		player.m4xEnd = 413;
+		player.m5xStart = 347;
+		player.m5xEnd = 320;
+	}
+	
+function initUserDuelStart() {
+	console.log('initUserDuelStart');
+	viewing = "";
+	currentPhase = "";
+	$('#field').show();
+	$('#field_content').show();
+	$('#numbers').insertBefore($('#red_stream'));
+	$('#coin').hide();
+	$('#die').hide();
+	$('#red_stream').hide();
+	$('#blue_stream').hide();
+	red_stream.stop();
+	blue_stream.stop();
+	$('#counters .counter').hide()
+	resetLifepoints();
+	actionsQueue = [];
+	awaiting_defeat = false;
+	awaiting_start_turn = false;
+	awaiting_token = false;
+	hideSelectZones();
+	$('.red_target').hide();
+	$('.blue_target').hide();
+	$('.green_target').hide();
+	$('#sword').hide();
+	$('#overlay').hide();
+	$('#view').hide();
+	$('#end_turn').hide();
+	$('#cig2_txt').hide();
+	$('#cib2_txt').hide();
+	$('#cig1_txt').hide();
+	$('#cib1_txt').hide();
+	player1.m1_txt = $('#hm1_txt');
+	player1.m2_txt = $('#hm2_txt');
+	player1.m3_txt = $('#hm3_txt');
+	player2.m1_txt = $('#om1_txt');
+	player2.m2_txt = $('#om2_txt');
+	player2.m3_txt = $('#om3_txt');
+	$('#start_turn').hide();
+	$('#duel #field_content').css("opacity", 1);
+	changeDarks();
+	$('#field').prepend($('#field_content'));
+	if (unknown_totals) {
+		$('#cid1_txt').hide();
+		$('#cie1_txt').hide();
+		$('#cib1_txt').hide();
+		$('#cig1_txt').hide();
+		$('#cid2_txt').hide();
+		$('#cie2_txt').hide();
+		$('#cib2_txt').hide();
+		$('#cig2_txt').hide();
+	}
+	hidePhases();
+	$('#field_stats > span').text("");
+	$('#field_stats > span').hide();
+	$('#view').css("left", 219);
+	$('#view').css("top", 58);
+}
+</script>
+		<script src="https://static.duelingbook.com/dom-to-image.min.js" async></script>
+		<script src="https://static.duelingbook.com/html2canvas.min.js" async></script>
+</body>
+</html>
