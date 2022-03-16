@@ -4,6 +4,12 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
+function sanitize($field){
+	//$temp = $_GET[$field];
+	$temp = trim($field);
+	return $temp;
+}
+
 function doLogin($username,$password)
 {
     $client = new rabbitMQClient("dbRabbitMQ.ini", "dbListener");
@@ -69,10 +75,12 @@ function requestProcessor($request)
   switch ($request['type'])
   {
     case "login":
-      return doLogin($request['username'],$request['password']);
+      $u = sanitize($request['username']); $p = sanitize($request['password']);
+      return doLogin($u, $p);
     case "validate_session":
       return doValidate($request['sessionId']);
     case "search":
+      $m = sanitize($request['message']);
       return doSearch($request['message']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
