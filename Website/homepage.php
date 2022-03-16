@@ -5,7 +5,7 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
 //include("functions.php");
-$client = new rabbitMQClient("testWebsiteRabbitMQ.ini","testServer");
+$client = new rabbitMQClient("dmzWebsiteRabbitMQ.ini","testServer");
 if (isset($argv[1]))
 {
   $msg = $argv[1];

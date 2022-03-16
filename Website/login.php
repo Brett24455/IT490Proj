@@ -6,7 +6,7 @@ require_once('rabbitMQLib.inc');
 
 function login($username, $password){
 
-	$client = new rabbitMQClient("testWebsiteRabbitMQ.ini","testServer");
+	$client = new rabbitMQClient("dbWebsiteRabbitMQ.ini","testServer");
 	if (isset($argv[1]))
 	{
 	  $msg = $argv[1];
@@ -30,9 +30,11 @@ function login($username, $password){
 	echo $argv[0]." END".PHP_EOL;
 
 
-	if(!$response){ 
+	if(!$response){
+		//$client->close();	
 		return false; 
 	}
+	//$client->close();
 	return true;
 }
 

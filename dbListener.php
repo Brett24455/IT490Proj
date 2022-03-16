@@ -35,10 +35,11 @@ function doLogin($username,$password)
     $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
     $matchpass = $r['password'];
     if($password == $matchpass){
-	echo "<br>Valid Password";
+	echo PHP_EOL."Valid Password".PHP_EOL;
     } else {
-	echo "<br>Invalid Password";
+	echo PHP_EOL."Invalid Password".PHP_EOL;
     }
+
     return ($password == $matchpass);
     //return "Whats good ".$username;
     //return false if not valid
