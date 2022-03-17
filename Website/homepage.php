@@ -16,11 +16,13 @@ if(!isset($_SESSION["logged"])){
 
 <form action = "search.php" id="F1">
 
-        <input type="text" name="search">Search for cards<br>
+        <input type="text" name="search"><br>Search for cards<br>
 
         <button type="submit" name="submit">Search</button>
 </form>
 
-<a href = "matchmaking.php"><br>Play a match</a>
-<a href = "deckbuilding.php"><br>Create a deck</a>
-
+<div id="F1">
+	<a href = "matchmaking.php">Play a match</a>
+	<a href = "deckbuilding.php"><br>Create a deck</a>
+	<a href = "logout.php"><br>Log Out</a>
+</div>
