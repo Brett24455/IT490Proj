@@ -76,6 +76,73 @@ function doRegister($username,$password)
     return "inserted";
 }
 
+function getProfile($username)
+{
+    // connect to DB
+    $host = 'localhost';
+    $user = 'webClient';
+    $pass = 'GrAtMaPaLeGo';
+    $db = 'webdb';
+
+    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+    ini_set('display_errors', 1);
+    $conn = new mysqli($host, $user, $pass);
+    if($conn->connect_error){
+            die("Connection failed: ".mysqli_connect_error());
+    }
+    echo "Connected successfully.";
+    mysqli_select_db($conn, $db);
+
+    // lookup username in database
+    $s = " select * from USERS where username='$username' ";
+    ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+    
+    // get whole user row and return specific ranking into an array
+    $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
+    $info = array();
+    $info['rank'] = $r['ranking'];
+    $info['wins'] = $r['wins'];
+
+    return $info;
+}
+
+function updateRank($username){
+    // connect to DB
+    $host = 'localhost';
+    $user = 'webClient';
+    $pass = 'GrAtMaPaLeGo';
+    $db = 'webdb';
+
+    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+    ini_set('display_errors', 1);
+    $conn = new mysqli($host, $user, $pass);
+    if($conn->connect_error){
+            die("Connection failed: ".mysqli_connect_error());
+    }
+    echo "Connected successfully.";
+    mysqli_select_db($conn, $db);
+
+    // lookup username in database
+    $s = " select * from USERS where username='$username' ";
+    ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+
+    // get whole user row
+    $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
+    if($r['ranking'] == null){
+	    $w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
+            ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+    }
+    else{
+	    $w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
+	    ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+    }
+    //fetch updated row
+    ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+    $u = mysqli_fetch_array($t, MYSQLI_ASSOC);
+
+    return "You won your match! You have ".$u['wins']." win(s).";
+
+}
 
 function requestProcessor($request)
 {
@@ -91,6 +158,10 @@ function requestProcessor($request)
 	    return doLogin($request['username'],$request['password']);
     case "register":
 	    return doRegister($request['username'],$request['password']);
+    case "profile":
+	    return getProfile($request['username']);
+    case "ranking":
+	    return updateRank($request['username']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
