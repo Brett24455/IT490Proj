@@ -9,11 +9,10 @@
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css">
-<script src="jQueryAssets/jquery-1.11.1.min.js"></script>
+<link href="css/LivePlay.css" rel="stylesheet" type="text/css">
 <script src="jQueryAssets/jquery.ui-1.10.4.button.min.js"></script>
 </head>
 <body>
-<script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap-4.4.1.js"></script>
 <div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Change Phase&nbsp; </a>
@@ -32,14 +31,14 @@
 </div>	
 <button id="Button1">Surrender&nbsp;</button>
 </div>
-	<div id="duel"></div>
-					<img id="field_spell_pic" src="images/FieldSpellDefault.jpg" alt="Field Spell" data-source="images/FieldspellDefault.jpg">
+	<div id="duel" ></div>
+					<img id="FieldSpellDefault" class="FieldSpellDefault" src="images/FieldSpellDefault.jpg" alt="Field Spell" data-source="images/FieldspellDefault.jpg">
 					<div id="rps_start" class="duel_frame"></div>
 <div id="tp_start" class="duel_frame">
-						<img id="field_decks" class="field_decks" src="images/field_decks.svg" alt="Decks" data-source="images/field_decks.svg">
+						<img id="Field_Decks" class="Field_Decks" src="images/field_decks.svg" alt="Decks" data-source="images/field_decks.svg">
 					</div>
 					<div id="duel_start" class="duel_frame">
-						<img src="images/field_zones.svg" alt="Field" height="850" class="field_zones" id="field_zones" data-source="images/field_zones.svg" >
+						<img src="images/field_zones.svg" alt="Field" class="Field_Zones" id="Field_Zones" data-source="images/field_zones.svg" >
 					</div>
 <div id="field"></div>
 <div class="preview"></div>
@@ -400,7 +399,5 @@ function initUserDuelStart() {
 	$('#view').css("top", 58);
 }
 </script>
-		<script src="https://static.duelingbook.com/dom-to-image.min.js" async></script>
-		<script src="https://static.duelingbook.com/html2canvas.min.js" async></script>
 </body>
 </html>
