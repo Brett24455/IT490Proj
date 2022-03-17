@@ -3,7 +3,7 @@
 session_start();
 
 #connect to db
-#require_once 'name of the database'
+require_once('webdb');
 
 $user_name = $_POST["name"];
 $email = $_POST["email"];

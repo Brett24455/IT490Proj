@@ -40,9 +40,11 @@ $user = $_GET["username"];
 $pass = $_GET["password"];
 
 if(login($user, $pass)){
+	header('location:homepage.html error=logged in');
 	echo "<br>Logged In.";
 }
 else{
+	header('location:gameindex.html error=login failed');
 	echo "<br>Failed login.";
 	exit();
 }
