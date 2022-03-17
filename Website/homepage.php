@@ -1,35 +1,28 @@
-#!/usr/bin/php
 <?php
-require_once('path.inc');
-require_once('get_host_info.inc');
-require_once('rabbitMQLib.inc');
-
-//include("functions.php");
-$client = new rabbitMQClient("testWebsiteRabbitMQ.ini","testServer");
-if (isset($argv[1]))
-{
-  $msg = $argv[1];
+include("config.php");
+if(!isset($_SESSION["logged"])){
+	echo "Please Log in.";
+	header( "refresh: 3; url=login.html" );
+	exit();
 }
-else
-{
-  $msg = "test message";
-}
+?>
 
-//if(isset($_POST['submit'])){
-	$msg = $_GET['search'];
-//}
-//echo "<br>'$msg'<br>";
+<!DOCTYPE html>
+<meta charset="UTF-8">
 
-$request = array();
-$request['type'] = "search";
-$request['username'] = "steve";
-$request['password'] = "password";
-$request['message'] = $msg;
-$response = $client->send_request($request);
-//$response = $client->publish($request);
+<style>
+        #F1 {border: 3px solid blue; width: 50%; margin: auto; margin-top: 80px}
+</style>
 
-echo "client received response: ".PHP_EOL;
-print_r($response);
-echo "\n\n";
+<form action = "search.php" id="F1">
 
-echo $argv[0]." END".PHP_EOL;
+        <input type="text" name="search"><br>Search for cards<br>
+
+        <button type="submit" name="submit">Search</button>
+</form>
+
+<div id="F1">
+	<a href = "matchmaking.php">Play a match</a>
+	<a href = "deckbuilding.php"><br>Create a deck</a>
+	<a href = "logout.php"><br>Log Out</a>
+</div>

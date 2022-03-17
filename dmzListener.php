@@ -8,8 +8,8 @@ function doSearch($msg)
 {
 	
     // lookup $msg/card in the api
-    // return all necessary data back
 
+    // return all necessary data back
     /*	
     $response = array();
     $response['name'] = ;

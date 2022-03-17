@@ -47,19 +47,13 @@ $user = sanitize($user); $pass = sanitize($pass);
 
 
 if(login($user, $pass)){
-<<<<<<< HEAD
-	header('location:homepage.html error=logged in');
-	echo "<br>Logged In.";
-=======
 	echo "<br>Logged In. Redirecting.";
 	$_SESSION["logged"] = true;
 	$_SESSION["user"] = $user;
 	header( "refresh: 3; url=homepage.php" );
 	exit();
->>>>>>> 90b124d9b7eb5173636b7905e6282757c71e9a21
 }
 else{
-	header('location:gameindex.html error=login failed');
 	echo "<br>Failed login.";
 	header( "refresh: 3; url=login.html" );
 	exit();
