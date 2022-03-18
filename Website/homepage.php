@@ -23,7 +23,7 @@ if(!isset($_SESSION["logged"])){
 
 <div id="F1">
 	<a href = "profile.php">Profile</a>
-	<a href = "matchmaking.php"><br>Play a match</a>
+	<a href = "testranking.php"><br>Play a match</a>
 	<a href = "deckbuilding.php"><br>Create a deck</a>
 	<a href = "logout.php"><br>Log Out</a>
 </div>
