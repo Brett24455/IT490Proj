@@ -37,6 +37,10 @@
 <div id="tp_start" class="duel_frame">
 						<img id="Field_Decks" class="Field_Decks" src="images/field_decks.svg" alt="Decks" data-source="images/field_decks.svg">
 					</div>
+	<div id="DeckZonePlayer" class="DeckZonePlayer" ></div>
+	<div id="ExtraDeckPlayer" class="ExtraDeckPlayer" ></div>
+	<div id="DeckZoneOpp" class="DeckZoneOpp" ></div>
+	<div id="ExtraDeckOpp" class="ExtraDeckOpp" ></div>
 					<div id="duel_start" class="duel_frame">
 						<img src="images/field_zones.svg" alt="Field" class="Field_Zones" id="Field_Zones" data-source="images/field_zones.svg" >
 					</div>
@@ -53,8 +57,12 @@
 							<div class="token_btn">
 								<img src="images/blank.png" width="30" height="28" alt="Token" data-src="images/token_btn_up.png">
 							</div>
+							<div id="LifePoints" class="LifePoints">
 							<span id="lp_txt">LP:</span>
-							<input id="life_txt" type="text">
+								<input id="life_txt" type="text"></div>
+							<div id="LifePointsOpp" class="LifePointsOpp">
+							<span id="lpOpp_txt">LP:</span>
+								<input id="lifeOpp_txt" type="text"></div>
 							<div id="plus_btn">
 								<img src="images/blank.png" alt="Plus" data-src="images/plus_btn.svg">
 							</div>
@@ -62,74 +70,7 @@
 								<img src="images/blank.png" alt="Minus" data-src="images/minus_btn.svg">
 							</div>
 						</div>
-	<div id="field_stats">
-							<span id="hm1_txt"></span>
-							<span id="hm2_txt"></span>
-							<span id="hm3_txt"></span>
-							<span id="hm4_txt"></span>
-							<span id="hm5_txt"></span>
-							<span id="om1_txt"></span>
-							<span id="om2_txt"></span>
-							<span id="om3_txt"></span>
-							<span id="om4_txt"></span>
-							<span id="om5_txt"></span>
-							<span id="hl_txt"></span>
-							<span id="ol_txt"></span>					
-						</div>
-						<div id="counters"></div>
-						<div id="hidden_spots">
-							<div class="untouchable">
-								<span id="m1_hidden"></span>
-								<span id="m2_hidden"></span>
-								<span id="m3_hidden"></span>
-								<span id="m4_hidden"></span>
-								<span id="m5_hidden"></span>							
-								<span id="opp_m1_hidden"></span>
-								<span id="opp_m2_hidden"></span>
-								<span id="opp_m3_hidden"></span>
-								<span id="opp_m4_hidden"></span>
-								<span id="opp_m5_hidden"></span>
-								<span id="link_left_hidden"></span>
-								<span id="link_right_hidden"></span>
-							</div>
-							<span id="deck_hidden"></span>
-							<span id="grave_hidden"></span>
-							<span id="banished_hidden"></span>
-							<span id="extra_hidden"></span>
-							<span id="opp_deck_hidden"></span>
-							<span id="opp_grave_hidden"></span>
-							<span id="opp_banished_hidden"></span>
-							<span id="opp_extra_hidden"></span>
-						</div>
-						<div id="numbers">
-							<span id="cid1_txt"></span>
-							<span id="cig1_txt"></span>
-							<span id="cib1_txt"></span>
-							<span id="cie1_txt"></span>
-							<span id="cid2_txt"></span>
-							<span id="cig2_txt"></span>
-							<span id="cib2_txt"></span>
-							<span id="cie2_txt"></span>
-						</div>
-						<div id="select_zones" class="glowing">
-							<div id="m1_select"></div>
-							<div id="m2_select"></div>
-							<div id="m3_select"></div>
-							<div id="m4_select"></div>
-							<div id="m5_select"></div>
-							
-							<div id="m1_select2"></div>
-							<div id="m2_select2"></div>
-							<div id="m3_select2"></div>
-							<div id="m4_select2"></div>
-							<div id="m5_select2"></div>
-							
-							<div id="s1_select"></div>
-							<div id="s2_select"></div>
-							<div id="s3_select"></div>
-							<div id="s4_select"></div>
-							<div id="s5_select"></div>
-						</div>
+
 <script>
 //Javascript here
 function Player() {
