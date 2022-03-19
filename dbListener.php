@@ -128,9 +128,18 @@ function updateRank($username){
 
     // get whole user row
     $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
-    if($r['ranking'] == null){
+    //Update the user's value to the lowest possible rank if they won their first match
+    if($r['ranking'] == 0){
 	    $w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
-            ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+	    ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+	    //I did this in a weird way, my brain is slightly fried but it works
+	    $max = "SELECT MAX(ranking) AS 'max' FROM USERS";
+	    ($t = mysqli_query($conn, $max)) or die(mysqli_error($conn));
+	    $max = mysqli_fetch_array($t, MYSQLI_ASSOC); 
+	    $m = $max['max']+1; 
+
+	    $r = "UPDATE USERS SET ranking = '$m' WHERE username='$username'";
+	    ($t = mysqli_query($conn, $r)) or die(mysqli_error($conn));
     }
     else{
 	    $w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
@@ -140,7 +149,7 @@ function updateRank($username){
     ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
     $u = mysqli_fetch_array($t, MYSQLI_ASSOC);
 
-    return "You won your match! You have ".$u['wins']." win(s).";
+    return "You won your match! You have ".$u['wins']." win(s).".PHP_EOL."You are rank ".$u['ranking']." on the leaderboards.";
 
 }
 
