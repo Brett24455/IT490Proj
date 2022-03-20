@@ -128,19 +128,72 @@ function updateRank($username){
 
     // get whole user row
     $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
-    if($r['ranking'] == null){
-	    $w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
-            ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
-    }
-    else{
+    //Update the user's value to the lowest possible rank if they won their first match
+    $playerRank = $r['ranking'];
+    if($playerRank == 0){
 	    $w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
 	    ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+	    //I did this in a weird way, my brain is slightly fried but it works
+	    $max = "SELECT MAX(ranking) AS 'max' FROM USERS";
+	    ($t = mysqli_query($conn, $max)) or die(mysqli_error($conn));
+	    $max = mysqli_fetch_array($t, MYSQLI_ASSOC); 
+	    $m = $max['max']+1;
+	    //if($m == 0) {$m = 1;} 
+
+	    $r = "UPDATE USERS SET ranking = '$m' WHERE username='$username'";
+	    ($t = mysqli_query($conn, $r)) or die(mysqli_error($conn));
+    }
+    //if the player is the highest rank, just update wins
+    else if($playerRank == 1){
+	    //Check to see if any other players are in 1st, lower everyone elses rank if so
+	    $uw = $r['wins'];
+	    $dupe = "SELECT count(*) AS 'count' FROM USERS where wins = '$uw'";
+            ($t = mysqli_query($conn, $dupe)) or die(mysqli_error($conn));
+	    $dupe = mysqli_fetch_array($t, MYSQLI_ASSOC);
+	    if($dupe['count'] > 0){
+		$l = "UPDATE USERS SET ranking = ranking+1 WHERE username!='$username' AND ranking>0";
+                ($t = mysqli_query($conn, $l)) or die(mysqli_error($conn));
+	    }
+	    $w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
+            ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+    }else{
+	    $uw = $r['wins']; //User wins
+	    //Find out if there are any players with the same amount of wins
+	    $dupe = "SELECT count(*) AS 'count' FROM USERS where wins = '$uw'";
+	    ($t = mysqli_query($conn, $dupe)) or die(mysqli_error($conn));
+	    $dupe = mysqli_fetch_array($t, MYSQLI_ASSOC); 
+
+	    //Find the amount of wins the player in the next rank has
+	    $nextuser = "SELECT * FROM USERS WHERE ranking = ('$playerRank'+1)";
+	    ($t = mysqli_query($conn, $nextuser)) or die(mysqli_error($conn));
+	    $nrw = mysqli_fetch_array($t, MYSQLI_ASSOC); 
+	    if($nrw != null){ $nrw = $nrw['wins']; }
+
+	    //If there are duplicate users with the same wins and rank, update the player rank
+	    if($dupe['count'] > 0){
+		$w = "UPDATE USERS SET wins = wins+1, ranking = ranking-1  WHERE username='$username'";
+		($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+	    //Dont update any rank if the user wont rank up
+    	    }else if(($uw+1) < $nrw){
+	    	$w = "UPDATE USERS SET wins = wins+1 WHERE username='$username'";
+		($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+	    //Update the rank of the player to the same rank if they have as many wins as the next rank
+	    }else if(($uw+1) == $nrw){
+		    $w = "UPDATE USERS SET wins = wins+1, ranking = ranking-1  WHERE username='$username'";
+		    ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+	    //Update the players rank, and lower all players in the next rank down if the player has more wins than them
+	    }else{
+		    $w = "UPDATE USERS SET wins = wins+1, ranking = ranking-1  WHERE username='$username'";
+		    $l = "UPDATE USERS SET ranking = ranking+1 WHERE wins='$nrw'";
+		    ($t = mysqli_query($conn, $l)) or die(mysqli_error($conn));
+		    ($t = mysqli_query($conn, $w)) or die(mysqli_error($conn));
+	    }
     }
     //fetch updated row
     ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
     $u = mysqli_fetch_array($t, MYSQLI_ASSOC);
 
-    return "You won your match! You have ".$u['wins']." win(s).";
+    return "You won your match! You have ".$u['wins']." win(s).".PHP_EOL."You are rank ".$u['ranking']." on the leaderboards.";
 
 }
 

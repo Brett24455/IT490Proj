@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS USERS(
         deck2ID int unsigned DEFAULT NULL,
         deck3ID int unsigned DEFAULT NULL,
         wins int unsigned DEFAULT 0,
-        ranking int unsigned DEFAULT NULL,
+        ranking int DEFAULT 0,
         primary key (userid),
 	FOREIGN KEY (deck1ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (deck2ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -50,3 +50,7 @@ CREATE TABLE IF NOT EXISTS USERS(
 );
 
 INSERT INTO USERS (username, password) values('testUser', 'testPassword');
+INSERT INTO USERS (username, password) values('Brett', 'BrettPassword123');
+INSERT INTO USERS (username, password) values('Brett2', 'BrettPass');
+
+
