@@ -4,6 +4,12 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 include('config.php');
 
+if(!isset($_SESSION["logged"])){
+        echo "Please Log in.";
+        header( "refresh: 3; url=login.html" );
+        exit();
+}
+
 
 function getProfile($username){
 

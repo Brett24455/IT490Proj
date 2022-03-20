@@ -4,33 +4,9 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
-<<<<<<< HEAD
-session_start();
-
-#connect to db
-require_once('webdb');
-
-$user_name = $_POST["name"];
-$email = $_POST["email"];
-$password = $_POST["password"];
-$conf_password = $_POST["confpassword"];
-
-#checks for any empty fields
-function empty_fields($user_name, $email, $password, $conf_password) {
-    if(empty($user_name) || ($email) || ($password) || ($conf_password)) {
-        $val;
-        $val = true;
-    }
-    else {
-        $val;
-        $val = false;
-    }
-    return $val;
-=======
 function sanitize($field){
         $field = trim($field);
         return $field;
->>>>>>> 90b124d9b7eb5173636b7905e6282757c71e9a21
 }
 
 
