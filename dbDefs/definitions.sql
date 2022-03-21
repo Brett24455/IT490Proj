@@ -24,10 +24,7 @@ CREATE TABLE IF NOT EXISTS USERS(
         deck3ID varchar(31) DEFAULT NULL,
         wins int unsigned DEFAULT 0,
         ranking int DEFAULT 0,
-        primary key (userid),
-	FOREIGN KEY (deck1ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (deck2ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (deck3ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE
+        primary key (userid)
 );
 
 INSERT INTO USERS (username, password) values('testUser', 'testPassword');

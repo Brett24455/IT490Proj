@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `DECKS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `DECKS` (
-  `deckId` int unsigned NOT NULL AUTO_INCREMENT,
+  `deckId` varchar(31) NOT NULL,
   `card1` json DEFAULT NULL,
   `card2` json DEFAULT NULL,
   `card3` json DEFAULT NULL,
@@ -58,18 +58,12 @@ CREATE TABLE `USERS` (
   `userid` int unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `deck1ID` int unsigned DEFAULT NULL,
-  `deck2ID` int unsigned DEFAULT NULL,
-  `deck3ID` int unsigned DEFAULT NULL,
+  `deck1ID` varchar(31) DEFAULT NULL,
+  `deck2ID` varchar(31) DEFAULT NULL,
+  `deck3ID` varchar(31) DEFAULT NULL,
   `wins` int unsigned DEFAULT '0',
   `ranking` int DEFAULT '0',
-  PRIMARY KEY (`userid`),
-  KEY `deck1ID` (`deck1ID`),
-  KEY `deck2ID` (`deck2ID`),
-  KEY `deck3ID` (`deck3ID`),
-  CONSTRAINT `USERS_ibfk_1` FOREIGN KEY (`deck1ID`) REFERENCES `DECKS` (`deckId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `USERS_ibfk_2` FOREIGN KEY (`deck2ID`) REFERENCES `DECKS` (`deckId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `USERS_ibfk_3` FOREIGN KEY (`deck3ID`) REFERENCES `DECKS` (`deckId`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,7 +73,7 @@ CREATE TABLE `USERS` (
 
 LOCK TABLES `USERS` WRITE;
 /*!40000 ALTER TABLE `USERS` DISABLE KEYS */;
-INSERT INTO `USERS` VALUES (1,'testUser','testPassword',NULL,NULL,NULL,0,0),(2,'Brett','BrettPassword123',NULL,NULL,NULL,0,0),(3,'Brett2','BrettPass',NULL,NULL,NULL,0,0);
+INSERT INTO `USERS` VALUES (1,'testUser','testPassword',NULL,NULL,NULL,0,0),(2,'Brett','BrettPassword123','Brett1','Brett2',NULL,0,0),(3,'Brett2','BrettPass',NULL,NULL,NULL,0,0);
 /*!40000 ALTER TABLE `USERS` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -92,4 +86,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-21 11:15:54
+-- Dump completed on 2022-03-21 19:23:33

@@ -226,11 +226,17 @@ function addCardIntoDeck($username, $deckno, $card)
     case "1":
 	    $deckid = $username."1";
 	    if($r['deck1ID'] == null){
+		//$i = " insert into DECKS (deckId) values('$deckid') ";
+		//($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+	        echo "BABABOOEY".$username;
+		$i = " UPDATE USERS SET deck1ID='$deckid' WHERE username='$username' ";
+		($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+		echo "H<br><br>";
 		$i = " insert into DECKS (deckId) values('$deckid') ";
-		($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
-		$i = " insert into USERS (deck1ID) values('$deckid') WHERE username = '$username' ";
-		($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+                ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+
 	    }
+	    break;
             //$s = " select * from DECKS where deckId = '$deckid'";
             //($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
 	    //$deckrow = mysqli_fetch_array($t, MYSQLI_ASSOC);
@@ -240,35 +246,44 @@ function addCardIntoDeck($username, $deckno, $card)
             if($r['deck2ID'] == null){
                 $i = " insert into DECKS (deckId) values('$deckid') ";
                 ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
-                $i = " insert into USERS (deck2ID) values('$deckid') WHERE username = '$username' ";
+                $i = " UPDATE USERS SET deck2ID='$deckid' WHERE username='$username' ";
                 ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
-            }
+	    }
+	break;
             
     case "3":
 	$deckid = $username."3";
             if($r['deck3ID'] == null){
                 $i = " insert into DECKS (deckId) values('$deckid') ";
                 ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
-                $i = " insert into USERS (deck3ID) values('$deckid') WHERE username = '$username' ";
+                $i = " UPDATE USERS SET deck1ID='$deckid' WHERE username='$username' ";
                 ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
 	    }
+	break;
 	    
     }
     //check through the table to see if any of the card JSON objects have the type of null. If so, insert the JSON file there
+    echo "<br>HELLO THERE<br>";
+    $s = " select * from DECKS where deckId = '$deckid' ";
+    ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+    $row = mysqli_fetch_array($t, MYSQLI_ASSOC);
+
     for($no = 1; $no <= 10; $no++){
 	$cardno = "card".$no;
-	$s = " select '$cardno' from DECKS where deckId = '$deckid' ";
-	($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
-	$currCard = mysqli_fetch_array($t, MYSQLI_ASSOC);
-	if($currCard[$cardno] == null){
-		$i = " insert into DECKS ('$cardno') values('$card') ";
+	//$s = " select '$cardno' from DECKS where deckId = '$deckid' ";
+	//($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+	//$currCard = mysqli_fetch_array($t, MYSQLI_ASSOC);
+	if(is_null($row[$cardno])){
+		$i = " UPDATE DECKS SET $cardno='$card' WHERE deckId='$deckid' ";
 		($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
-		return "Card inserted into deck ".$deckid;
+		echo "Card inserted into deck ".$deckid;
+		return true;
 	}
     }
    
     //If all card columns are full, return a string to the user telling them to delete a card before they can add another one
-     return "Deck is full. Please delete a card from your deck.";
+    echo "Deck is full. Please delete a card from your deck.";
+    return false;
 }
 
 function requestProcessor($request)

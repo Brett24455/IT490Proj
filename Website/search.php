@@ -40,4 +40,21 @@ echo " ".PHP_EOL;
 print_r("Description: ".$response['effect']);
 echo " ".PHP_EOL;
 
+$html_input = implode(",", $response);
+
 ?>
+<!DOCTYPE html>
+
+<style>
+        #F1 {border: 3px solid blue; width: 50%; margin: auto; margin-top: 80px}
+</style>
+
+<form action = "addDeck1.php" id="F1">
+	<button type="submit" name="submit" value="<?php echo $html_input ?>">Add to Deck 1</button>
+</form>
+<form action = "addDeck2.php" id="F1">
+        <button type="submit" name="submit" value="<?php echo $html_input ?>">Add to Deck 2</button>
+</form>
+<form action = "addDeck3.php" id="F1">
+        <button type="submit" name="submit" value="<?php echo $html_input ?>">Add to Deck 3</button>
+</form>
