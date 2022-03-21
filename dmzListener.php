@@ -8,19 +8,19 @@ function doSearch($msg)
 {
 	
     // lookup $msg/card in the api
-
-    // return all necessary data back
-    /*	
+	$data = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?name=".$msg);
+	$response_data = json_decode($data, true);
+	//var_dump($response_data['data'][0]['name']);
+	// return all necessary data back
     $response = array();
-    $response['name'] = ;
-    $response['rating'] = ;
-    $response['atk'] = ;
-    $response['def'] = ;
-    $response['effect'] = ;
-    */
+    $response['name'] = $response_data['data'][0]['name'];
+    $response['rating'] = $response_data['data'][0]['level'];
+    $response['atk'] = $response_data['data'][0]['atk'];
+    $response['def'] = $response_data['data'][0]['def'];
+    $response['effect'] = $response_data['data'][0]['desc'];
 
     // return $response;
-    return "Unfinished function ".$msg;
+    return $response;
 }
 
 function requestProcessor($request)

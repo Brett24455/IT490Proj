@@ -28,12 +28,16 @@ $request['message'] = $msg;
 $response = $client->send_request($request);
 //$response = $client->publish($request);
 
-echo "client received response: ".PHP_EOL;
-print_r($response);
-echo "\n\n";
-
-echo $argv[0]." END".PHP_EOL;
-
-
+//echo "client received response: ".PHP_EOL;
+print_r("Name: ".$response['name']);
+echo "\n";
+print_r("Level: ".$response['rating']);
+echo " ".PHP_EOL;
+print_r("Attack: ".$response['atk']);
+echo " ".PHP_EOL;
+print_r("Defense: ".$response['def']);
+echo " ".PHP_EOL;
+print_r("Description: ".$response['effect']);
+echo " ".PHP_EOL;
 
 ?>
