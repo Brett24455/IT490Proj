@@ -197,6 +197,80 @@ function updateRank($username){
 
 }
 
+function addCardIntoDeck($username, $deckno, $card)
+{
+    // connect to DB
+    $host = 'localhost';
+    $user = 'webClient';
+    $pass = 'GrAtMaPaLeGo';
+    $db = 'webdb';
+
+    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+    ini_set('display_errors', 1);
+    $conn = new mysqli($host, $user, $pass);
+    if($conn->connect_error){
+            die("Connection failed: ".mysqli_connect_error());
+    }
+    echo "Connected successfully.";
+    mysqli_select_db($conn, $db);
+
+    // lookup username in database
+    $s = " select * from USERS where username='$username' ";
+    ($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+    $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
+
+    //Look up the specific Deck the user is trying to add to. If it is null, create the deck in the DECKS table, and insert
+    //the deck ID into the USERS table
+    //If the specific deck does have an ID, take it and look for it in the DECKS table
+    switch($deckno){
+    case "1":
+	    $deckid = $username."1";
+	    if($r['deck1ID'] == null){
+		$i = " insert into DECKS (deckId) values('$deckid') ";
+		($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+		$i = " insert into USERS (deck1ID) values('$deckid') WHERE username = '$username' ";
+		($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+	    }
+            //$s = " select * from DECKS where deckId = '$deckid'";
+            //($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+	    //$deckrow = mysqli_fetch_array($t, MYSQLI_ASSOC);
+            
+    case "2":
+	$deckid = $username."2";
+            if($r['deck2ID'] == null){
+                $i = " insert into DECKS (deckId) values('$deckid') ";
+                ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+                $i = " insert into USERS (deck2ID) values('$deckid') WHERE username = '$username' ";
+                ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+            }
+            
+    case "3":
+	$deckid = $username."3";
+            if($r['deck3ID'] == null){
+                $i = " insert into DECKS (deckId) values('$deckid') ";
+                ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+                $i = " insert into USERS (deck3ID) values('$deckid') WHERE username = '$username' ";
+                ($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+	    }
+	    
+    }
+    //check through the table to see if any of the card JSON objects have the type of null. If so, insert the JSON file there
+    for($no = 1; $no <= 10; $no++){
+	$cardno = "card".$no;
+	$s = " select '$cardno' from DECKS where deckId = '$deckid' ";
+	($t = mysqli_query($conn, $s)) or die(mysqli_error($conn));
+	$currCard = mysqli_fetch_array($t, MYSQLI_ASSOC);
+	if($currCard[$cardno] == null){
+		$i = " insert into DECKS ('$cardno') values('$card') ";
+		($t = mysqli_query($conn, $i)) or die(mysqli_error($conn));
+		return "Card inserted into deck ".$deckid;
+	}
+    }
+   
+    //If all card columns are full, return a string to the user telling them to delete a card before they can add another one
+     return "Deck is full. Please delete a card from your deck.";
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -215,6 +289,15 @@ function requestProcessor($request)
 	    return getProfile($request['username']);
     case "ranking":
 	    return updateRank($request['username']);
+    case "deck":
+	    $card = array();
+	    $card['name'] = $request['name'];
+	    $card['level'] = $request['level'];
+	    $card['atk'] = $request['atk'];
+	    $card['def'] = $request['def'];
+	    $card['desc'] = $request['desc'];
+	    $card = json_encode($card);
+	    return addCardIntoDeck($request['username'], $request['deckno'], $card);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

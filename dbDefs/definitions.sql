@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS webdb;
 
 CREATE TABLE IF NOT EXISTS DECKS(
-	deckId INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	deckId varchar(31) NOT NULL,
 	card1 JSON DEFAULT NULL,
 	card2 JSON DEFAULT NULL,
 	card3 JSON DEFAULT NULL,
@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS USERS(
         userid INT UNSIGNED NOT NULL AUTO_INCREMENT,
         username varchar(30) NOT NULL,
         password varchar(30) NOT NULL,
-        deck1ID int unsigned DEFAULT NULL,
-        deck2ID int unsigned DEFAULT NULL,
-        deck3ID int unsigned DEFAULT NULL,
+        deck1ID varchar(31) DEFAULT NULL,
+        deck2ID varchar(31) DEFAULT NULL,
+        deck3ID varchar(31) DEFAULT NULL,
         wins int unsigned DEFAULT 0,
         ranking int DEFAULT 0,
         primary key (userid),
