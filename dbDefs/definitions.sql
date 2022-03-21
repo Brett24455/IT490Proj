@@ -1,0 +1,37 @@
+CREATE DATABASE IF NOT EXISTS webdb;
+
+CREATE TABLE IF NOT EXISTS DECKS(
+	deckId INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	card1 JSON DEFAULT NULL,
+	card2 JSON DEFAULT NULL,
+	card3 JSON DEFAULT NULL,
+	card4 JSON DEFAULT NULL,
+	card5 JSON DEFAULT NULL,
+	card6 JSON DEFAULT NULL,
+	card7 JSON DEFAULT NULL,
+	card8 JSON DEFAULT NULL,
+	card9 JSON DEFAULT NULL,
+	card10 JSON DEFAULT NULL,
+	primary key (deckId)
+);
+
+CREATE TABLE IF NOT EXISTS USERS(
+        userid INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        username varchar(30) NOT NULL,
+        password varchar(30) NOT NULL,
+        deck1ID int unsigned DEFAULT NULL,
+        deck2ID int unsigned DEFAULT NULL,
+        deck3ID int unsigned DEFAULT NULL,
+        wins int unsigned DEFAULT 0,
+        ranking int DEFAULT 0,
+        primary key (userid),
+	FOREIGN KEY (deck1ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (deck2ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (deck3ID) REFERENCES DECKS(deckId) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO USERS (username, password) values('testUser', 'testPassword');
+INSERT INTO USERS (username, password) values('Brett', 'BrettPassword123');
+INSERT INTO USERS (username, password) values('Brett2', 'BrettPass');
+
+
