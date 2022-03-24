@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS DECKS(
 CREATE TABLE IF NOT EXISTS USERS(
         userid INT UNSIGNED NOT NULL AUTO_INCREMENT,
         username varchar(30) NOT NULL,
-        password varchar(30) NOT NULL,
+        password varchar(60) NOT NULL,
         deck1ID varchar(31) DEFAULT NULL,
         deck2ID varchar(31) DEFAULT NULL,
         deck3ID varchar(31) DEFAULT NULL,
