@@ -5,35 +5,33 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LivePlay</title>
-<link href="css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap-4.4.1modified.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css">
 <link href="css/LivePlay.css" rel="stylesheet" type="text/css">
-<script src="jQueryAssets/jquery.ui-1.10.4.button.min.js"></script>
+<!-- <script src="jQueryAssets/jquery.ui-1.10.4.button.min.js"></script> -->
+<script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap-4.4.1.js"></script>
-<div class="dropdown show"> <a class="btn btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Change Phase&nbsp; </a>
-<div class="dropdown-menu">
-	<a class="dropdown-item enabled" href="#" >Draw Phase</a>
-	<div class="dropdown-divider"></div>
-	<a class="dropdown-item enabled" href="#" >Standby Phase</a>
-	<div class="dropdown-divider"></div>
-    <a class="dropdown-item enabled" href="#" >Main Phase 1</a>
-	<div class="dropdown-divider"></div>
-	<a class="dropdown-item enaabled" href="#" >Battle Phase</a>  
-    <div class="dropdown-divider"></div>
-	<a class="dropdown-item enabled" href="#" >Main Phase 2</a>
-	<div class="dropdown-divider"></div>
-	<a class="dropdown-item enabled" href="#" >End Turn</a>
-</div>	
-<button id="Button1">Surrender&nbsp;</button>
+<div class="btn-toolbar" role="toolbar">
+  <div class="btn-group mr-2" role="group">
+  </div>
+  <div class="btn-group mr-2" role="group">
+    <button type="button" class="btn btn-primary">Draw Phase</button>
+    <button type="button" class="btn btn-secondary">Standby Phase</button>
+    <button type="button" class="btn btn-success">Main Phase 1</button>
+    <button type="button" class="btn btn-danger">Battle Phase</button>
+    <button type="button" class="btn btn-warning">Main Phase 2</button>
+    <button type="button" class="btn btn-info">End Phase</button>
+    <div div>
+    <button type="button" class="btn btn-dark">Surrender</button>
+  </div>
 </div>
 	<div id="duel" ></div>
 					<img id="FieldSpellDefault" class="FieldSpellDefault" src="images/FieldSpellDefault.jpg" alt="Field Spell" data-source="images/FieldspellDefault.jpg">
-					<div id="rps_start" class="duel_frame"></div>
 <div id="tp_start" class="duel_frame">
 						<img id="Field_Decks" class="Field_Decks" src="images/field_decks.svg" alt="Decks" data-source="images/field_decks.svg">
 					</div>
@@ -77,27 +75,12 @@
 <div class="preview"></div>
 	<div id="duel_content" class="duel_frame"></div>
 						<div id="field_content">
-							<div id="die_btn">
-								<img src="images/blank.png" alt="Die" data-src="images/die_btn_up.svg">
-							</div>
-							<div id="coin_btn">
-								<img src="images/blank.png" alt="Coin" data-src="images/coin_btn_up.svg">
-							</div>
-							<div class="token_btn">
-								<img src="images/blank.png" width="30" height="28" alt="Token" data-src="images/token_btn_up.png">
-							</div>
 							<div id="LifePoints" class="LifePoints">
 							<span id="lp_txt">LP:</span>
-								<input id="life_txt" type="text"></div>
+								<input id="life_txt" type="text" value="8000"></input></div>
 							<div id="LifePointsOpp" class="LifePointsOpp">
 							<span id="lpOpp_txt">LP:</span>
-								<input id="lifeOpp_txt" type="text"></div>
-							<div id="plus_btn">
-								<img src="images/blank.png" alt="Plus" data-src="images/plus_btn.svg">
-							</div>
-							<div id="minus_btn">
-								<img src="images/blank.png" alt="Minus" data-src="images/minus_btn.svg">
-							</div>
+								<input id="lifeOpp_txt" type="text" value="8000"></div>
 						</div>
 
 <script>
@@ -181,6 +164,7 @@ function Player() {
 	player.fieldSpell;
 	player.opponent;
 	player.lifepoints = 8000;
+	document.getElementById('life_txt').value= player.lifepoints;
 	player.m1_txt;
 	player.m2_txt;
 	player.m3_txt;
@@ -310,7 +294,7 @@ function Player() {
 		player.m5xStart = 347;
 		player.m5xEnd = 320;
 	}
-	
+/*
 function initUserDuelStart() {
 	console.log('initUserDuelStart');
 	viewing = "";
@@ -368,6 +352,102 @@ function initUserDuelStart() {
 	$('#view').css("left", 219);
 	$('#view').css("top", 58);
 }
+	
+	
+	
+	
+	
+function initPhases() {
+	$('#end_turn').hide();
+	if (duelist && turn_player.username == username) {
+		$('#dp').click(enterDPE);
+		$('#sp').click(enterSPE);
+		$('#m1').click(enterM1E);
+		$('#bp').click(enterBPE);
+		$('#m2').click(enterM2E);
+		$('#ep').click(enterEPE);
+		
+		if (!automatic) {
+			$('.phase').css("pointer-events", "auto");
+			$('#end_turn').css("pointer-events", "auto");
+		}
+		
+		else {
+			$('#end_turn').show();
+			setText($('#end_turn .end_turn_txt'));
+		}
+	}
+	else {
+		$('.phase').css("pointer-events", "none");
+	}
+}
+
+function enterDP() {
+	hidePhases();
+	currentPhase = "DP";
+	changeLight($('#dp'));
+	endAction();
+}
+
+function enterSP() {
+	hidePhases();
+	currentPhase = "SP";
+	changeLight($('#sp'));
+	endAction();
+}
+
+function enterM1() {
+	hidePhases();
+	currentPhase = "M1";
+	changeLight($('#m1'));
+	endAction();
+}
+
+function enterBP() {
+	hidePhases();
+	currentPhase = "BP";
+	changeLight($('#bp'));
+	endAction();
+}
+
+function enterM2() {
+	hidePhases();
+	currentPhase = "M2";
+	changeLight($('#m2'));
+	endAction();
+}
+
+function enterEP() {
+	hidePhases();
+	currentPhase = "EP";
+	changeLight($('#ep'));
+	endAction();
+}
+
+function endTurn(data) {
+	if (duelist && data.username == username) {
+		$('#dp').off("click", enterDPE);
+		$('#sp').off("click", enterSPE);
+		$('#m1').off("click", enterM1E);
+		$('#bp').off("click", enterBPE);
+		$('#m2').off("click", enterM2E);
+		$('#ep').off("click", enterEPE);
+		$('.phase').css("pointer-events", "none");
+		$('#end_turn').css("pointer-events", "none");
+		$('#end_turn .yellow').show();
+		$('#end_turn .white_glow').show();
+	}
+	hidePhases();
+	currentPhase = "";
+	
+	players.push(players.splice(0, 1)[0]);
+	
+	
+	showStartTurn();
+	
+	
+	endAction();
+}	*/
 </script>
 </body>
 </html>
