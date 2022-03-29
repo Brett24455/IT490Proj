@@ -22,6 +22,10 @@ function register($username, $password){
           $msg = "test message";
         }
 
+	//Hash the password given
+	$password = password_hash($password, PASSWORD_BCRYPT);
+	echo $password.": The Hash.";
+
         $request = array();
         $request['type'] = "register";
         $request['username'] = $username;
@@ -43,7 +47,8 @@ function register($username, $password){
 		case "inserted":
 			echo "Account successfully created! Redirecting to login.";
 			return true;
-        }
+	}
+	echo "Failed to create account.";
         return false;
 }
 
