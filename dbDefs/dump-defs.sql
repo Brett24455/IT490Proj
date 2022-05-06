@@ -57,14 +57,14 @@ DROP TABLE IF EXISTS `USERS`;
 CREATE TABLE `USERS` (
   `userid` int unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(60) DEFAULT NULL,
   `deck1ID` varchar(31) DEFAULT NULL,
   `deck2ID` varchar(31) DEFAULT NULL,
   `deck3ID` varchar(31) DEFAULT NULL,
   `wins` int unsigned DEFAULT '0',
   `ranking` int DEFAULT '0',
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE `USERS` (
 
 LOCK TABLES `USERS` WRITE;
 /*!40000 ALTER TABLE `USERS` DISABLE KEYS */;
-INSERT INTO `USERS` VALUES (1,'testUser','testPassword',NULL,NULL,NULL,0,0),(2,'Brett','BrettPassword123','Brett1','Brett2',NULL,0,0),(3,'Brett2','BrettPass',NULL,NULL,NULL,0,0);
+INSERT INTO `USERS` VALUES (1,'testUser','testPassword',NULL,NULL,NULL,5,2),(2,'Brett','BrettPassword123',NULL,NULL,NULL,3,1),(3,'Brett2','BrettPass',NULL,NULL,NULL,0,0),(4,'Brett3','$2y$10$aLzF4p9lkj8XzAMj2nWYYOEvN09zo6i0GYxsw1qrN1RCtWbI04qa6',NULL,NULL,NULL,0,0),(5,'Brett4','$2y$10$iAjSRe7k7F8Ne1yxKvlIhu1PhmmN8wCxCpF7DLpHYUYHZyFIWH7MK',NULL,NULL,NULL,0,0),(6,'Brett5','$2y$10$ruplNAlqBv2SUXyBVCCi7OILSewGxyvrNva62mxPFxapjwWVbhXye',NULL,NULL,NULL,0,0);
 /*!40000 ALTER TABLE `USERS` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -86,4 +86,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-21 19:23:33
+-- Dump completed on 2022-05-06 17:55:07
