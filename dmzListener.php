@@ -4,6 +4,12 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
+error_reporting(E_ALL);
+ini_set("display_errors", "On");
+ini_set("ignore_repeated_errors", "TRUE");
+ini_set("log_errors", "On");
+ini_set("error_log", "~/git/IT490/errorlogging.txt");
+
 function doSearch($msg)
 {
 	
