@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <script type="module" src="./search.js"></script>
+    <meta charset="utf-8">
+
+    <title>
+
+    </title>
+
+</head>
+
+<body>
+
+<script>
+    //let name = ;
+    //document.getElementById("name").innerHTML = name;
+</script>
+
+<div class="box-wrapper">
+
+    <div id="cont">
+
+        <div id="search">
+            <div class="input-group">
+                <h1>Yu-Gi-Oh! Cards</h1>
+                    <input type="search" id="search-box" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onsubmit="cardSearch()"/>
+                    <button type="submit" id="search-button" onclick="cardSearch">search</button>
+            </div>
+
+            <div class="card-display">
+                <p>
+                    Card Name: <span id="cardName"></span><br>
+                    Card ID: <span id="cardId"></span><br>
+                    Card Attack: <span id="cardAtk"></span><br>
+                    Card Defense: <span id="cardDef"></span><br>
+                </p>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Choose</button>
+                <div class="dropdown-content">
+                    <a href="">Deck 1</a>
+                    <a href="">Deck 2</a>
+                    <a href="">Deck 3</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="middle-column">
+            <div id="deck1">
+                <h2>Deck 1</h2>
+            </div>
+            <div id="deck2">
+                <h2>Deck 2</h2>
+            </div>
+            <div id="deck3">
+                <h2>Deck 3</h2>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+
+</body>
+<style>
+    body,
+    html {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .box-wrapper {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #cont {
+        padding: 10px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #search {
+        flex-grow: 0.8;
+        border: solid 1px orange
+    }
+
+    .middle-column {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .middle-column div {
+        flex-grow: 1;
+        margin: 0 8px;
+        border: solid 1px red;
+    }
+
+    .middle-column div+div {
+        margin-top: 8px
+    }
+
+    .input-group {
+        margin: auto;
+        padding-top: 10%;
+        padding-left: 30%;
+    }
+
+    /* Style The Dropdown Button */
+    .dropbtn {
+        background-color: gray;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        padding-top: 15px;
+        padding-left: 35%;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .card-display {
+        border: 5px solid black;
+        text-align: justify;
+        width: max-content;
+        height: max-content;
+    }
+
+
+
+</style>
+</html>

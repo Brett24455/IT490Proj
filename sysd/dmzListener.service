@@ -1,0 +1,17 @@
+[Unit]
+Description=DMZ-Listener Service
+
+[Service]
+User=root
+Type=simple
+TimeoutSec=0
+PIDFile=/var/run/dmzListener.pid
+ExecStart=/usr/bin/php /home/brett/git/IT490Proj/dmzListener.php > /dev/null 2>/dev/null
+KillMode=process
+
+Restart=always
+RestartSec=3s
+
+[Install]
+WantedBy=default.target
+
