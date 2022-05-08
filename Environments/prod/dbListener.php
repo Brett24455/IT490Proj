@@ -34,11 +34,10 @@ function doLogin($username,$password, $db)
     $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
     $hash = $r['password'];
     if(password_verify($password,$hash)){
-	echo PHP_EOL."Valid Password".PHP_EOL;
+	echo PHP_EOL."Valid Password, User logged in".PHP_EOL;
     } else {
 	echo PHP_EOL."Invalid Password".PHP_EOL;
     }
-
     return (password_verify($password,$hash));
 }
 
