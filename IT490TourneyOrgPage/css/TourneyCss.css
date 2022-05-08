@@ -1,0 +1,139 @@
+@charset "utf-8";
+/* CSS Document */
+#TourneyBackground {
+position: relative;
+z-index: 0;
+}
+
+#TourneyBracket {
+    position: absolute;
+    z-index: 1;
+    margin-top: -1197px;
+    width: 1071px;
+    margin-left: 185px;
+}
+
+#TourneyEntry {
+    position: absolute;
+    z-index: 3;
+    margin-top: -844px;
+    margin-right: 0px;
+    margin-left: 575px;
+    height: 36px;
+    width: 277px;
+	font-size: 20px;
+}
+
+#BracketWinner{
+    position: absolute;
+    z-index: 2;
+    margin-top: -1153px;
+    margin-right: 0px;
+    margin-left: 677px;
+}
+/*BracketSpots*/
+#BracketSpot1 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -1158px;
+    margin-right: 0px;
+    margin-left: 268px;
+}
+#BracketSpot2 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -956px;
+    margin-right: 0px;
+    margin-left: 265px;
+}
+#BracketSpot3 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -741px;
+    margin-right: 0px;
+    margin-left: 265px;
+}
+#BracketSpot4 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -537px;
+    margin-right: 0px;
+    margin-left: 265px;
+}
+#BracketSpot5 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -1158px;
+    margin-right: 0px;
+    margin-left: 993px;
+}
+#BracketSpot6 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -956px;
+    margin-right: 0px;
+    margin-left: 993px;
+}
+#BracketSpot7 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -740px;
+    margin-right: 0px;
+    margin-left: 993px;
+}
+#BracketSpot8 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -537px;
+    margin-right: 0px;
+    margin-left: 993px;
+}
+#BracketSpot9 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -1057px;
+    margin-right: 0px;
+    margin-left: 449px;
+}
+#BracketSpot10 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -642px;
+    margin-right: 0px;
+    margin-left: 445px;
+}
+#BracketSpot11 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -1057px;
+    margin-right: 0px;
+    margin-left: 811px;
+}
+#BracketSpot12 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -642px;
+    margin-right: 0px;
+    margin-left: 811px;
+}
+#BracketSpot13 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -900px;
+    margin-right: 0px;
+    margin-left: 626px;
+}
+#BracketSpot14 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -793px;
+    margin-right: 0px;
+    margin-left: 628px;
+}
+#BracketSpot15 {
+    position: absolute;
+    z-index: 2;
+    margin-top: -1124px;
+    margin-right: 0px;
+    margin-left: 629px;
+}

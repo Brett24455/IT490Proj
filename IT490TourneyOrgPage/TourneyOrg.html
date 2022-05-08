@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TourneyOrg</title>
+<style type="text/css">
+@import url("css/TourneyCss.css");
+</style>
+</head>
+
+<body onload="onOpenInitialize()">
+<img id="TourneyBackground" class="TourneyBackground" src="images/FieldSpellDefault.jpg" alt="Field Spell" data-source="images/FieldspellDefault.jpg">
+<img id="TourneyBracket" class="TourneyBracket" src="images/tournyebracket.png"
+alt="Bracket" data-source="images/tournyebracket.png">
+<input type="text" id="BracketSpot1" class="BracketSpots1">
+<input type="text" id="BracketSpot2" class="BracketSpots2">
+<input type="text" id="BracketSpot3" class="BracketSpots3">
+<input type="text" id="BracketSpot4" class="BracketSpots4">
+<input type="text" id="BracketSpot5" class="BracketSpots5">
+<input type="text" id="BracketSpot6" class="BracketSpots6">
+<input type="text" id="BracketSpot7" class="BracketSpots7">
+<input type="text" id="BracketSpot8" class="BracketSpots8">
+<input type="text" id="BracketSpot9" class="BracketSpots9">
+<input type="text" id="BracketSpot10" class="BracketSpots10">
+<input type="text" id="BracketSpot11" class="BracketSpots11">
+<input type="text" id="BracketSpot12" class="BracketSpots12">
+<input type="text" id="BracketSpot13" class="BracketSpots13">
+<input type="text" id="BracketSpot14" class="BracketSpots14">
+<input type="text" id="BracketSpot15" class="BracketSpots15">
+	<button onclick="onClickJoin()" type="button" id="TourneyEntry" class="TourneyEntry"> Click to Join </button>
+<p id="BracketWinner" class="BracketWinner">WINNER</p>
+</body>
+</html>
+
+<script>
+var joinButton = document.getElementById("TourneyEntry");
+	
+var BracketS1 = document.getElementById("BracketSpot1");	
+var BracketS2 = document.getElementById("BracketSpot2");
+var BracketS3 = document.getElementById("BracketSpot3");
+var BracketS4 = document.getElementById("BracketSpot4");
+var BracketS5 = document.getElementById("BracketSpot5");
+var BracketS6 = document.getElementById("BracketSpot6");
+var BracketS7 = document.getElementById("BracketSpot7");	
+var BracketS8 = document.getElementById("BracketSpot8");	
+var BracketS9 = document.getElementById("BracketSpot9");	
+var BracketS10 = document.getElementById("BracketSpot10");	
+var BracketS11 = document.getElementById("BracketSpot11");
+var BracketS12 = document.getElementById("BracketSpot12");
+var BracketS13 = document.getElementById("BracketSpot13");
+var BracketS14 = document.getElementById("BracketSpot14");
+var BracketS15 = document.getElementById("BracketSpot15");
+
+	
+var player1 = string("TestPlayer");
+var player2;
+var player3;
+var player4;
+var player5;
+var player6;
+var player7;
+var player8;
+
+
+function onOpenInitialize(){
+	BracketS1.value="Open";
+	BracketS2.value="Open";
+	BracketS3.value="Open";
+	BracketS4.value="Open";
+	BracketS5.value="Open";
+	BracketS6.value="Open";
+	BracketS7.value="Open";
+	BracketS8.value="Open";	
+}
+function onClickJoin(){
+	
+	if(BracketS1.value="Open"){
+		BracketS1.value="testplayer";}
+    else if(BracketS2.value="Open"){
+		BracketS2.value="player2test";}
+//	else if(BracketS3.value="Open"){BracketS3.value="player3test";}
+//	else if(BracketS4.value="Open"){BracketS4.value="player4test";}
+//	else if(BracketS5.value="Open"){BracketS5.value="player5test";}
+//	else if(BracketS6.value="Open"){BracketS6.value="player6test";}
+//	else if(BracketS7.value="Open"){BracketS7.value="player7test";}	
+//	else if(BracketS8.value="Open"){BracketS8.value="player8test";}
+//	else joinButton.disabled=true;
+	
+	
+}	
+</script>

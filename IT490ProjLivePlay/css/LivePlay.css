@@ -1,0 +1,423 @@
+@charset "utf-8";
+/* CSS Document */
+#FieldSpellDefault {
+position: relative;
+z-index: 0;
+}
+
+#Field_Decks {
+    position: absolute;
+    z-index: 1;
+    margin-top: -980px;
+}
+
+#Field_Zones {
+    position: absolute;
+    z-index: 2;
+    margin-top: -980px;
+}
+
+#LifePoints {
+    position: absolute;
+    z-index: 3;
+    margin-top: -404px;
+    color: #FF0004;
+    font-size: large;
+	
+	
+}
+
+#LifePointsOpp {
+    position: absolute;
+    z-index: 3;
+    margin-top: -1136px;
+    color: #FF0004;
+    font-size: large;
+    margin-right: 0px;
+    margin-left: 1085px;
+	
+}
+
+
+/* Monster Zones */
+#MonsterZ1 {
+    position: absolute;
+    z-index: 4;
+    margin-top: -668px;
+    margin-left: 280px;
+    height: 83px;
+    width: 55px;
+	
+	
+}
+
+#MonsterZ2 {
+    position: absolute;
+    z-index: 4;
+    height: 83px;
+    width: 55px;
+    margin-top: -668px;
+    margin-left: 366px;
+	
+}
+
+#MonsterZ3 {
+    position: absolute;
+    z-index: 4;
+    height: 83px;
+    width: 55px;
+    margin-top: -668px;
+    margin-left: 452px;
+	
+	
+	
+}
+
+#MonsterZ4 {
+    position: absolute;
+    z-index: 4;	
+    height: 83px;
+    width: 55px;
+    margin-top: -668px;
+    margin-left: 538px;	
+	
+	
+}
+
+#MonsterZ5 {
+    position: absolute;
+    z-index: 4;	
+    height: 83px;
+    width: 55px;
+    margin-top: -668px;
+    margin-left: 624px;	
+	
+	
+}
+
+#MonsterZOpp1 {
+    position: absolute;
+    z-index: 4;
+    margin-top: -839px;
+    margin-left: 280px;
+    height: 83px;
+    width: 55px;
+		
+	
+	
+}
+
+#MonsterZOpp2 {
+	position: absolute;
+    z-index: 4;
+    margin-top: -839px;
+    margin-left: 366px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+#MonsterZOpp3 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -839px;
+    margin-left: 452px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+#MonsterZOpp4 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -839px;
+    margin-left: 538px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+#MonsterZOpp5 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -839px;
+    margin-left: 624px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+
+/*Spell and Trap Zones */
+#STZone1 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -581px;
+    margin-left: 280px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+#STZone2 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -581px;
+    margin-left: 366px;
+    height: 83px;
+    width: 55px;		
+	
+	
+}
+
+#STZone3 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -581px;
+    margin-left: 452px;
+    height: 83px;
+    width: 55px;		
+	
+	
+}
+
+#STZone4 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -581px;
+    margin-left: 538px;
+    height: 83px;
+    width: 55px;		
+	
+	
+}
+
+#STZone5 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -581px;
+    margin-left: 624px;
+    height: 83px;
+    width: 55px;		
+	
+	
+}
+
+#STZoneOpp1 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -925px;
+    margin-left: 280px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+#STZoneOpp2 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -925px;
+    margin-left: 366px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+#STZoneOpp3 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -925px;
+    margin-left: 452px;
+    height: 83px;
+    width: 55px;	
+	
+	
+}
+
+#STZoneOpp4 {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -925px;
+    margin-left: 538px;
+    height: 83px;
+    width: 55px;		
+		
+	
+	
+}
+
+#STZoneOpp5 {
+    position: absolute;
+    z-index: 4;
+    margin-top: -925px;
+    margin-left: 624px;
+    height: 83px;
+    width: 55px;
+		
+	
+	
+}
+
+
+/*Field Spell Zones*/
+#FieldSpellZone {
+    position: absolute;
+    z-index: 4;
+    margin-top: -753px;
+    margin-left: 254px;
+    height: 83px;
+    width: 55px;
+	
+	
+}
+
+#FieldSpellZoneOpp {
+    position: absolute;
+    z-index: 4;
+    margin-top: -753px;
+    margin-left: 650px;
+    height: 83px;
+    width: 55px;
+	
+	
+}
+
+/*Deck Zone Spaces */
+#DeckZonePlayer {
+    position: absolute;
+    z-index: 3;
+    text-shadow: 0px 0px #FF0004;
+    height: 83px;
+    width: 55px;
+    margin-left: 712px;
+    margin-top: -545px;
+	
+	
+}
+
+#DeckZoneOpp {
+    position: absolute;
+    z-index: 3;
+    text-shadow: 0px 0px #FF0004;
+    height: 83px;
+    width: 55px;
+    margin-left: 194px;
+    margin-top: -992px;
+	
+	
+}
+
+/*CardCounts(Include Decks,ExtraDeck, Graveyard, RFP,*/
+#DeckCountPlayer{
+ 	position: absolute;
+ 	z-index: 4;	
+}
+
+#DeckCountOpp{
+ 	position: absolute;
+    z-index: 4;	
+}
+
+#ExtraDeckCountPlayer{
+	position: absolute;
+    z-index: 4;
+}
+
+#ExtraDeckCountOpp{
+ 	position: absolute;
+    z-index: 4;	
+}
+
+#GraveyardCountPlayer{
+ 	position: absolute;
+    z-index: 4;	
+}
+
+#GraveyardCountOpp{
+ 	position: absolute;
+    z-index: 4;	
+}
+
+#RFPCountPlayer{
+ 	position: absolute;
+    z-index: 4;	
+}
+
+#RFPCountOpp{
+ 	position: absolute;
+    z-index: 4;	
+}
+
+
+/*Graveyards of both players */
+#GraveyardPlayer {
+    position: absolute;
+    z-index: 4;
+    margin-top: -709px;
+    margin-left: 713px;
+    height: 83px;
+    width: 55px;
+}
+
+#GraveyardOpp {
+    position: absolute;
+    z-index: 4;
+    margin-top: -795px;
+    margin-left: 193px;
+    height: 83px;
+    width: 55px;
+	
+}
+
+
+/* Extra Deck Zones for both player */
+#ExtraDeckPlayer {
+    position: absolute;
+    z-index: 3;
+    text-shadow: 0px 0px #FF0004;
+    height: 83px;
+    width: 55px;
+    margin-left: 194px;
+    margin-top: -546px;
+	
+}
+
+#ExtraDeckOpp {
+    position: absolute;
+    z-index: 3;
+    text-shadow: 0px 0px #FF0004;
+    height: 83px;
+    width: 55px;
+    margin-left: 712px;
+    margin-top: -992px;
+}
+
+
+/* Removed From Play (Banished) Zones for both players */
+#RFPZonePlayer {
+    position: absolute;
+    z-index: 4;
+    margin-top: -709px;
+    margin-left: 193px;
+    height: 83px;
+    width: 55px;
+	
+	
+}
+
+#RFPZoneOpp {
+    position: absolute;
+    z-index: 4;	
+    margin-top: -795px;
+    margin-left: 713px;
+    height: 83px;
+    width: 55px;	
+	
+}
