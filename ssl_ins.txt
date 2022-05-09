@@ -1,0 +1,17 @@
+To create a self signed SSL certificate.
+Run the command: sudo openssl req -x509 -nodes -days "number of days" -newkey rsa:2048 -keyout "directory to place the private key" -out "directory to place the self-signed certificate
+
+After this command is run, fill out the prompt, press enter to skip 
+
+The self signed certificate and key are located in /etc/apache2/ssl directory. 
+
+Open the directory /etc/apache2/sites-enabled. There is a configuration file, myserver.local.conf, which has the SSL configurations. 
+Update virtual host to use port 443 for secure connections.
+Maks ure the SSLCertificateFile and SSLCertificateKeyFile use the correct path. In this case the key and certificate file are located in /etc/apache2/ssl.
+
+Any file added to the directory "/var/www/myserver.local" will use SSL.
+
+
+
+
+

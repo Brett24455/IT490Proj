@@ -15,6 +15,8 @@ $filename = file_get_contents("errorlogging.txt");
 
 $rabbitmqclient = new rabbitMQClient("eventlogger.ini", "testServer");
 
+$funcVal = logProcessor($request);
+
 function logProcessor($error)
 {
 	$client = new rabbitMQClient("log.ini", "testServer");
@@ -25,8 +27,8 @@ function logProcessor($error)
 	return $response;
 }
 
+file_put_contents("~/git/IT490Proj/errorlogging.txt", $funcVal, FILE_APPEND);
 logProcessor("test error");
-
 ?>
 
 
