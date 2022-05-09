@@ -4,12 +4,7 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
-<<<<<<< HEAD
-
-function doLogin($username,$password)
-=======
 function doLogin($username,$password, $db)
->>>>>>> 64ed70f342088fc1dbc193b463e2fd8e64ee6f1a
 {
     // connect to DB
     $host = 'localhost';
@@ -39,11 +34,10 @@ function doLogin($username,$password, $db)
     $r = mysqli_fetch_array($t, MYSQLI_ASSOC);
     $hash = $r['password'];
     if(password_verify($password,$hash)){
-	echo PHP_EOL."Valid Password".PHP_EOL;
+	echo PHP_EOL."Valid Password, User logged in".PHP_EOL;
     } else {
 	echo PHP_EOL."Invalid Password".PHP_EOL;
     }
-
     return (password_verify($password,$hash));
 }
 
