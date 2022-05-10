@@ -17,7 +17,7 @@ Enable UFW and see the rules that are set so far.
 $ sudo ufw enable
 $ sudo ufw status verbose
 
-Allow more port connections, including RabbitMQ access and IP addresses.
+Allow more port connections, including RabbitMQ access, IP addresses, and specific network interfaces.
 $ sudo ufw allow http OR $ sudo ufw allow 80
 $ sudo ufw allow https OR $ sudo ufw allow 443
 $ sudo ufw allow 4369
@@ -47,3 +47,5 @@ $ sudo ufw allow from 10.243.38.138
 $ sudo ufw allow from 10.243.133.208
 $ sudo ufw allow from 10.243.201.154
 $ sudo ufw allow from 10.243.21.236
+$ sudo ufw allow in on enp0s3 to any port 80
+$ sudo ufw allow in on ztyxaxyf3a to any port 3306
