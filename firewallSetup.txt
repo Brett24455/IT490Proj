@@ -1,0 +1,49 @@
+How to install and setup UFW (Uncomplicated Firewall) for backend.
+
+$ sudo apt install ufw
+
+Enable IPv6. Open UFW configuration with nano or vim and set value of IPV6 to 'yes'
+$ sudo nano /etc/default/ufw
+
+Set up default policies. Denies all incoming connections and allow all outgoing connections.
+$ sudo ufw default deny incoming
+$ sudo ufw default allow outgoing
+
+Allowing SSH connections.
+$ sudo ufw allow ssh OR $ sudo ufw allow 22
+$ sudo ufw allow 2222
+
+Enable UFW and see the rules that are set so far.
+$ sudo ufw enable
+$ sudo ufw status verbose
+
+Allow more port connections, including RabbitMQ access and IP addresses.
+$ sudo ufw allow http OR $ sudo ufw allow 80
+$ sudo ufw allow https OR $ sudo ufw allow 443
+$ sudo ufw allow 4369
+$ sudo ufw allow 5672
+$ sudo ufw allow 5671
+$ sudo ufw allow 5552
+$ sudo ufw allow 5551
+$ sudo ufw allow 6000:6500/tcp
+$ sudo ufw allow 6000:6500/udp
+$ sudo ufw allow 25672
+$ sudo ufw allow 35672:35682/tcp
+$ sudo ufw allow 35672:35682/udp
+$ sudo ufw allow 15672
+$ sudo ufw allow 15671
+$ sudo ufw allow 61613
+$ sudo ufw allow 61614
+$ sudo ufw allow 1883
+$ sudo ufw allow 8883
+$ sudo ufw allow 15674
+$ sudo ufw allow 15675
+$ sudo ufw allow 15692
+$ sudo ufw allow 9993
+$ sudo ufw allow from 10.243.18.141
+$ sudo ufw allow from 10.243.136.237
+$ sudo ufw allow from 10.243.227.63
+$ sudo ufw allow from 10.243.38.138
+$ sudo ufw allow from 10.243.133.208
+$ sudo ufw allow from 10.243.201.154
+$ sudo ufw allow from 10.243.21.236
