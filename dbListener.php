@@ -4,12 +4,7 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
-<<<<<<< HEAD
-
-function doLogin($username,$password)
-=======
 function doLogin($username,$password, $db)
->>>>>>> 64ed70f342088fc1dbc193b463e2fd8e64ee6f1a
 {
     // connect to DB
     $host = 'localhost';
